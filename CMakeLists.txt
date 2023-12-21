@@ -10,14 +10,18 @@ add_executable(simshell main.cpp
         RootBar.hpp
         SimshellApp.cpp
         SimshellApp.hpp
-        RightComponentsHolder.cpp
-        RightComponentsHolder.hpp
+        RightComponents.cpp
+        RightComponents.hpp
         components/BrightnessSlider.cpp
         components/BrightnessSlider.hpp
         services/backlight/BrightnessService.cpp
         services/backlight/BrightnessService.hpp
         services/backlight/BacklightDevice.cpp
         services/backlight/BacklightDevice.hpp
+        CenterComponents.hpp
+        CenterComponents.cpp
+        components/datetime/DateTimeButton.cpp
+        components/datetime/DateTimeButton.hpp
 )
 
 # GTKmm

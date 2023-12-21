@@ -19,7 +19,7 @@ void SimshellApp::on_activate() {
     gtk_layer_auto_exclusive_zone_enable(root_bar->gobj());
 
     // Don't grab keyboard focus
-    gtk_layer_set_keyboard_mode(root_bar->gobj(), GTK_LAYER_SHELL_KEYBOARD_MODE_NONE);
+//    gtk_layer_set_keyboard_mode(root_bar->gobj(), GTK_LAYER_SHELL_KEYBOARD_MODE_NONE);
 
     // The margins are the gaps around the window's edges
     gtk_layer_set_margin (root_bar->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, 5);

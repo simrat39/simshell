@@ -8,10 +8,10 @@
 #include <gtkmm/menubutton.h>
 #include "components/BrightnessSlider.hpp"
 
-class RightComponentsHolder: public Gtk::Box {
+class RightComponents: public Gtk::Box {
 public:
-    RightComponentsHolder();
-    ~RightComponentsHolder() override;
+    RightComponents();
+    ~RightComponents() override;
 protected:
     void on_map() override;
     void on_unmap() override;

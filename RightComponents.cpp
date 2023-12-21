@@ -4,18 +4,16 @@
 
 #include <gtkmm/menubutton.h>
 #include <iostream>
-#include "RightComponentsHolder.hpp"
+#include "RightComponents.hpp"
 #include "services/backlight/BrightnessService.hpp"
 
-RightComponentsHolder::RightComponentsHolder(): Gtk::Box() {
+RightComponents::RightComponents(): Gtk::Box() {
     this->append(mb);
 
     auto ctx = mb.get_style_context();
     ctx->add_class("button");
 
     mb.set_icon_name("display-brightness-symbolic");
-    mb.set_has_frame(false);
-    mb.set_focus_on_click(false);
 
     Gtk::Popover pp{};
     pp.get_style_context()->add_class("popover");
@@ -35,16 +33,16 @@ RightComponentsHolder::RightComponentsHolder(): Gtk::Box() {
     }
 }
 
-void RightComponentsHolder::on_unmap() {
+void RightComponents::on_unmap() {
     for (const auto bs: brightness_sliders) {
         delete bs;
     }
 }
 
-void RightComponentsHolder::on_map() {
+void RightComponents::on_map() {
     Widget::on_map();
 }
 
-RightComponentsHolder::~RightComponentsHolder() {
+RightComponents::~RightComponents() {
 
 };

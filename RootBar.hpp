@@ -7,13 +7,16 @@
 #include <gtkmm/window.h>
 #include <gtkmm/button.h>
 #include <gtkmm/box.h>
+#include "RightComponents.hpp"
+#include "CenterComponents.hpp"
 
 class RootBar: public Gtk::Window {
 public:
     RootBar();
     ~RootBar() override;
 protected:
-    void on_button_clicked();
-
     Gtk::Box m_box{};
+
+    CenterComponents* center;
+    RightComponents* right;
 };
