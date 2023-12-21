@@ -5,6 +5,7 @@
 #pragma once
 
 #include <gtkmm/application.h>
+#include "services/hyprland/HyprlandService.hpp"
 
 class SimshellApp: public Gtk::Application {
 public:

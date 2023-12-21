@@ -7,13 +7,12 @@
 #include <gtkmm/box.h>
 #include <gtkmm/menubutton.h>
 #include "components/BrightnessSlider.hpp"
-#include "components/datetime/DateTimeButton.hpp"
 #include "components/workspaces/HyprlandWorkspaces.hpp"
 
-class CenterComponents: public Gtk::Box {
+class LeftComponents: public Gtk::Box {
 public:
-    CenterComponents();
-    ~CenterComponents() override;
+    LeftComponents();
+    ~LeftComponents() override;
 private:
-    DateTimeButton* dtb;
+    HyprlandWorkspaces* hpw;
 };

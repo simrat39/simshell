@@ -5,7 +5,7 @@
 #include <gtkmm/menubutton.h>
 #include <iostream>
 #include "RightComponents.hpp"
-#include "services/backlight/BrightnessService.hpp"
+#include "services/backlight/BacklightService.hpp"
 
 RightComponents::RightComponents(): Gtk::Box() {
     this->append(mb);
@@ -20,7 +20,7 @@ RightComponents::RightComponents(): Gtk::Box() {
     pp.set_size_request(300, -1);
     mb.set_popover(pp);
 
-    auto b_devices = BrightnessService::get_instance().get_devices();
+    auto b_devices = BacklightService::get_instance().get_devices();
 
     GList *d;
 

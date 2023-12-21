@@ -14,14 +14,20 @@ add_executable(simshell main.cpp
         RightComponents.hpp
         components/BrightnessSlider.cpp
         components/BrightnessSlider.hpp
-        services/backlight/BrightnessService.cpp
-        services/backlight/BrightnessService.hpp
+        services/backlight/BacklightService.cpp
+        services/backlight/BacklightService.hpp
         services/backlight/BacklightDevice.cpp
         services/backlight/BacklightDevice.hpp
         CenterComponents.hpp
         CenterComponents.cpp
         components/datetime/DateTimeButton.cpp
         components/datetime/DateTimeButton.hpp
+        services/hyprland/HyprlandService.cpp
+        services/hyprland/HyprlandService.hpp
+        components/workspaces/HyprlandWorkspaces.cpp
+        components/workspaces/HyprlandWorkspaces.hpp
+        LeftComponents.hpp
+        LeftComponents.cpp
 )
 
 # GTKmm

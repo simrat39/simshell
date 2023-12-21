@@ -9,6 +9,7 @@
 #include <gtkmm/box.h>
 #include "RightComponents.hpp"
 #include "CenterComponents.hpp"
+#include "LeftComponents.hpp"
 
 class RootBar: public Gtk::Window {
 public:
@@ -17,6 +18,7 @@ public:
 protected:
     Gtk::Box m_box{};
 
+    LeftComponents* left;
     CenterComponents* center;
     RightComponents* right;
 };

@@ -8,7 +8,7 @@
 #include <gtkmm/scale.h>
 #include <gtkmm/image.h>
 #include <gtkmm/box.h>
-#include "../services/backlight/BrightnessService.hpp"
+#include "../services/backlight/BacklightService.hpp"
 
 class BrightnessSlider: public Gtk::Box {
 public:

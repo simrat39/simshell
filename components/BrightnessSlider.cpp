@@ -33,9 +33,9 @@ BrightnessSlider::BrightnessSlider(GUdevDevice *device) : Gtk::Box(), device(dev
 void BrightnessSlider::on_map() {
     Widget::on_map();
 
-    BrightnessService::get_instance().add_listener("slider", [this](GUdevClient *client, const gchar *action,
-                                                                  GUdevDevice *udev_device,
-                                                                  BrightnessService *user_data) {
+    BacklightService::get_instance().add_listener("slider", [this](GUdevClient *client, const gchar *action,
+                                                                       GUdevDevice *udev_device,
+                                                                       BacklightService *user_data) {
         if (!set_by_slider) {
             auto myName = g_udev_device_get_name(this->device);
             auto inName = g_udev_device_get_name(udev_device);
@@ -55,7 +55,7 @@ void BrightnessSlider::on_map() {
 void BrightnessSlider::on_unmap() {
     Widget::on_unmap();
 
-    BrightnessService::get_instance().remove_listener("slider");
+    BacklightService::get_instance().remove_listener("slider");
 }
 
 

@@ -9,7 +9,7 @@
 RootBar::RootBar() {
     this->set_child(m_box);
 
-    Gtk::Button b1{"L"};
+    left = new LeftComponents{};
     center = new CenterComponents{};
     right = new RightComponents{};
 
@@ -21,7 +21,7 @@ RootBar::RootBar() {
     mt2.set_halign(Gtk::Align::FILL);
     mt2.set_hexpand(true);
 
-    m_box.append(b1);
+    m_box.append(*left);
     m_box.append(mt1);
     m_box.append(*center);
     m_box.append(mt2);
@@ -31,6 +31,7 @@ RootBar::RootBar() {
 }
 
 RootBar::~RootBar() {
+    delete left;
     delete center;
     delete right;
 };
