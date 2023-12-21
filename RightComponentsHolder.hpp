@@ -13,9 +13,11 @@ public:
     RightComponentsHolder();
     ~RightComponentsHolder() override;
 protected:
-    void on_show() override;
+    void on_map() override;
     void on_unmap() override;
 private:
     Gtk::MenuButton mb;
+    Gtk::Popover popover;
+
     std::vector<BrightnessSlider*> brightness_sliders;
 };

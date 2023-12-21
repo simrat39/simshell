@@ -24,6 +24,10 @@ private:
     Gtk::Scale scale;
     GUdevDevice* device;
 
-    sigc::connection on_scale_value_changed_connection;
     bool set_by_slider = false;
+
+
+    inline static const char *SYSTEMD_DBUS_NAME = "org.freedesktop.login1";
+    inline static const char *SYSTEMD_DBUS_PATH = "/org/freedesktop/login1/session/auto";
+    inline static const char *SYSTEMD_DBUS_INTERFACE = "org.freedesktop.login1.Session";
 };

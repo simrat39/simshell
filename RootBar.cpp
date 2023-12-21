@@ -33,7 +33,3 @@ RootBar::RootBar() {
 }
 
 RootBar::~RootBar() = default;
-
-void RootBar::on_button_clicked() {
-
-}
