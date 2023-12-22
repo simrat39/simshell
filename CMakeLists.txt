@@ -28,6 +28,16 @@ add_executable(simshell main.cpp
         components/workspaces/HyprlandWorkspaces.hpp
         LeftComponents.hpp
         LeftComponents.cpp
+        services/mpris/MprisService.cpp
+        services/mpris/MprisService.hpp
+        services/mpris/MprisPlayer.cpp
+        services/mpris/MprisPlayer.hpp
+        components/mpris/MprisButton.cpp
+        components/mpris/MprisButton.hpp
+        components/mpris/MprisPopover.cpp
+        components/mpris/MprisPopover.hpp
+        components/mpris/MprisPage.cpp
+        components/mpris/MprisPage.hpp
 )
 
 # GTKmm
@@ -57,3 +67,21 @@ link_directories(${GUDEV_LIBRARY_DIRS})
 link_libraries(${GUDEV_LIBRARIES})
 
 target_link_libraries(simshell ${GUDEV_LIBRARIES})
+
+# playerctl
+pkg_check_modules(PLAYERCTL REQUIRED playerctl)
+
+include_directories(${PLAYERCTL_INCLUDE_DIRS})
+link_directories(${PLAYERCTL_LIBRARY_DIRS})
+link_libraries(${PLAYERCTL_LIBRARIES})
+
+target_link_libraries(simshell ${PLAYERCTL_LIBRARIES})
+
+# libsoup
+pkg_check_modules(LIBSOUP REQUIRED libsoup-3.0)
+
+include_directories(${LIBSOUP_INCLUDE_DIRS})
+link_directories(${LIBSOUP_LIBRARY_DIRS})
+link_libraries(${LIBSOUP_LIBRARIES})
+
+target_link_libraries(simshell ${LIBSOUP_LIBRARIES})

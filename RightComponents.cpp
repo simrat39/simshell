@@ -8,6 +8,9 @@
 #include "services/backlight/BacklightService.hpp"
 
 RightComponents::RightComponents(): Gtk::Box() {
+    mpris_button = new MprisButton{};
+    this->append(*mpris_button);
+
     this->append(mb);
 
     auto ctx = mb.get_style_context();
@@ -44,5 +47,5 @@ void RightComponents::on_map() {
 }
 
 RightComponents::~RightComponents() {
-
+    delete mpris_button;
 };

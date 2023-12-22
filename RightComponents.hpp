@@ -7,6 +7,7 @@
 #include <gtkmm/box.h>
 #include <gtkmm/menubutton.h>
 #include "components/BrightnessSlider.hpp"
+#include "components/mpris/MprisButton.hpp"
 
 class RightComponents: public Gtk::Box {
 public:
@@ -18,6 +19,7 @@ protected:
 private:
     Gtk::MenuButton mb;
     Gtk::Popover popover;
-
     std::vector<BrightnessSlider*> brightness_sliders;
+
+    MprisButton* mpris_button;
 };

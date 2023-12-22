@@ -2,9 +2,11 @@
 // Created by simrat39 on 12/18/23.
 //
 
+#include <iostream>
 #include "RootBar.hpp"
 #include "RightComponents.hpp"
 #include "CenterComponents.hpp"
+#include "services/mpris/MprisService.hpp"
 
 RootBar::RootBar() {
     this->set_child(m_box);
@@ -34,4 +36,4 @@ RootBar::~RootBar() {
     delete left;
     delete center;
     delete right;
-};
+}

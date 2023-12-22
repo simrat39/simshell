@@ -10,6 +10,7 @@
 #include "RightComponents.hpp"
 #include "CenterComponents.hpp"
 #include "LeftComponents.hpp"
+#include "services/mpris/MprisPlayer.hpp"
 
 class RootBar: public Gtk::Window {
 public:

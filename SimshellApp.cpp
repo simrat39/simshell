@@ -8,6 +8,7 @@
 #include "SimshellApp.hpp"
 #include "RootBar.hpp"
 #include "services/hyprland/HyprlandService.hpp"
+#include "services/mpris/MprisService.hpp"
 
 SimshellApp::SimshellApp() : Gtk::Application("simtim.app") {}
 
@@ -23,9 +24,9 @@ void SimshellApp::on_activate() {
 //    gtk_layer_set_keyboard_mode(root_bar->gobj(), GTK_LAYER_SHELL_KEYBOARD_MODE_NONE);
 
     // The margins are the gaps around the window's edges
-    gtk_layer_set_margin(root_bar->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, 5);
-    gtk_layer_set_margin(root_bar->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, 5);
-    gtk_layer_set_margin(root_bar->gobj(), GTK_LAYER_SHELL_EDGE_TOP, 5);
+    gtk_layer_set_margin(root_bar->gobj(), GTK_LAYER_SHELL_EDGE_LEFT, 0);
+    gtk_layer_set_margin(root_bar->gobj(), GTK_LAYER_SHELL_EDGE_RIGHT, 0);
+    gtk_layer_set_margin(root_bar->gobj(), GTK_LAYER_SHELL_EDGE_TOP, 0);
     gtk_layer_set_margin(root_bar->gobj(), GTK_LAYER_SHELL_EDGE_BOTTOM, 0); // 0 is default
 
     // Pin to top, left and right for a top bar
@@ -39,6 +40,8 @@ void SimshellApp::on_activate() {
     provider->load_from_file(Gio::File::create_for_path("../styles.css"));
     Gtk::StyleContext::add_provider_for_display(Gdk::Display::get_default(), provider,
                                                 GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    // Start listening to MPRIS events
+    MprisService::get_instance();
 
     // Show root window
     root_bar->present();

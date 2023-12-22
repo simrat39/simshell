@@ -1,3 +1,20 @@
 window {
-    border-radius: 16px;
+    border-radius: 0;
+}
+
+.mpris_popover {
+    margin-right: 30px;
+}
+
+.mpris_page {
+    padding: 15px;
+}
+
+.mpris_page image {
+    border-radius: 20px;
+}
+
+.mpris_page_title_author_col {
+    padding-left: 10px;
+    font-weight: 700;
 }
