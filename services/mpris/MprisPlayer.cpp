@@ -40,4 +40,12 @@ std::string MprisPlayer::get_metadata(std::string key) {
     return std::string{playerctl_player_print_metadata_prop(player, key.c_str(), nullptr)};
 }
 
+long MprisPlayer::get_position() {
+    return playerctl_player_get_position(player, nullptr);
+}
+
+long MprisPlayer::get_length() {
+    return std::stol(get_metadata("mpris:length"));
+}
+
 MprisPlayer::~MprisPlayer() = default;

@@ -19,6 +19,8 @@ RightComponents::RightComponents(): Gtk::Box() {
     mb.set_icon_name("display-brightness-symbolic");
 
     Gtk::Popover pp{};
+    pp.set_has_arrow(false);
+    pp.set_offset(5, 5);
     pp.get_style_context()->add_class("popover");
     pp.set_size_request(300, -1);
     mb.set_popover(pp);

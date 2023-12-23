@@ -18,3 +18,13 @@ window {
     padding-left: 10px;
     font-weight: 700;
 }
+
+.mpris_page_progress {
+    padding-top: 10px;
+}
+
+button {
+    transition: all .5s;
+    outline: none;
+    border: none;
+}

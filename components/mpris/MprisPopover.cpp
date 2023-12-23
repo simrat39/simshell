@@ -7,11 +7,13 @@
 #include "MprisPage.hpp"
 
 MprisPopover::MprisPopover(): Gtk::Popover() {
-    this->set_child(notebook);
+    this->set_has_arrow(false);
+    this->set_offset(5, 5);
     this->set_size_request(400, -1);
-    this->notebook.set_size_request(350, -1);
-
     this->add_css_class("mpris_popover");
+
+    this->notebook.set_size_request(350, -1);
+    this->set_child(notebook);
 }
 
 MprisPopover::~MprisPopover() = default;

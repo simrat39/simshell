@@ -6,6 +6,8 @@
 
 #include <gtkmm/box.h>
 #include <gtkmm/image.h>
+#include <gtkmm/progressbar.h>
+#include <libsoup/soup-session.h>
 #include "../../services/mpris/MprisPlayer.hpp"
 
 class MprisPage: public Gtk::Box {
@@ -14,11 +16,17 @@ public:
     ~MprisPage() override;
 
     Gtk::Image music_art;
+
+    SoupSession* soup_session;
+    SoupMessage* soup_message;
 private:
     MprisPlayer* player;
 
     Gtk::Label title;
     Gtk::Label artist;
+    Gtk::ProgressBar progress;
+
+    std::string album_art;
 
     void update_data();
 };

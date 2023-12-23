@@ -16,6 +16,8 @@ public:
 
     std::string get_title();
     std::string get_artist();
+    long get_position();
+    long get_length();
     std::string get_metadata(std::string key);
 
     sigc::signal<void()> signal_update;
