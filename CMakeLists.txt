@@ -38,6 +38,8 @@ add_executable(simshell main.cpp
         components/mpris/MprisPopover.hpp
         components/mpris/MprisPage.cpp
         components/mpris/MprisPage.hpp
+        components/active_window/ActiveWindowLabel.cpp
+        components/active_window/ActiveWindowLabel.hpp
 )
 
 # GTKmm

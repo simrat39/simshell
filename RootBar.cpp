@@ -2,38 +2,29 @@
 // Created by simrat39 on 12/18/23.
 //
 
-#include <iostream>
 #include "RootBar.hpp"
 #include "RightComponents.hpp"
 #include "CenterComponents.hpp"
-#include "services/mpris/MprisService.hpp"
 
 RootBar::RootBar() {
-    this->set_child(m_box);
+    left = Gtk::make_managed<LeftComponents>();
+    left->set_hexpand(true);
+    left->set_halign(Gtk::Align::START);
 
-    left = new LeftComponents{};
-    center = new CenterComponents{};
-    right = new RightComponents{};
+    center = Gtk::make_managed<CenterComponents>();
+    center->set_hexpand(true);
+    center->set_halign(Gtk::Align::CENTER);
 
-    Gtk::Box mt1{};
-    mt1.set_halign(Gtk::Align::FILL);
-    mt1.set_hexpand(true);
-
-    Gtk::Box mt2{};
-    mt2.set_halign(Gtk::Align::FILL);
-    mt2.set_hexpand(true);
+    right = Gtk::make_managed<RightComponents>();
+    right->set_hexpand(true);
+    right->set_halign(Gtk::Align::END);
 
     m_box.append(*left);
-    m_box.append(mt1);
     m_box.append(*center);
-    m_box.append(mt2);
     m_box.append(*right);
 
-    m_box.show();
+    m_box.set_homogeneous();
+    this->set_child(m_box);
 }
 
-RootBar::~RootBar() {
-    delete left;
-    delete center;
-    delete right;
-}
+RootBar::~RootBar() = default;

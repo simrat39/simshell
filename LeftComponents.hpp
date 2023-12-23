@@ -8,6 +8,7 @@
 #include <gtkmm/menubutton.h>
 #include "components/BrightnessSlider.hpp"
 #include "components/workspaces/HyprlandWorkspaces.hpp"
+#include "components/active_window/ActiveWindowLabel.hpp"
 
 class LeftComponents: public Gtk::Box {
 public:
@@ -15,4 +16,5 @@ public:
     ~LeftComponents() override;
 private:
     HyprlandWorkspaces* hpw;
+    ActiveWindowLabel* awl;
 };

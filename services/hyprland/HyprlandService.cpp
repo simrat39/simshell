@@ -65,9 +65,7 @@ void HyprlandService::on_hypripc_data(const std::string &data) {
             event = ACTIVE_WINDOW;
         } else if (e_name == "destroyworkspace") {
             event = DESTROY_WORKSPACE;
-        } else if (e_name == "openlayer") {
-            std::cout << "Opened new layer" << std::endl;
-        }
+        } else if (e_name == "openlayer") {}
 
         signal_data_recieved.emit(event, e_data);
     }

@@ -6,11 +6,8 @@
 #include "services/backlight/BacklightService.hpp"
 
 CenterComponents::CenterComponents(): Gtk::Box() {
-    dtb = new DateTimeButton();
-
+    dtb = Gtk::make_managed<DateTimeButton>();
     append(*dtb);
 }
 
-CenterComponents::~CenterComponents() {
-    delete dtb;
-};
+CenterComponents::~CenterComponents() = default;

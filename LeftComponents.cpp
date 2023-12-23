@@ -6,10 +6,11 @@
 #include "components/workspaces/HyprlandWorkspaces.hpp"
 
 LeftComponents::LeftComponents(): Gtk::Box() {
-    hpw = new HyprlandWorkspaces();
+    hpw = Gtk::make_managed<HyprlandWorkspaces>();
     append(*hpw);
+
+    awl = Gtk::make_managed<ActiveWindowLabel>();
+    append(*awl);
 }
 
-LeftComponents::~LeftComponents() {
-    delete hpw;
-};
+LeftComponents::~LeftComponents() = default;
