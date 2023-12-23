@@ -40,6 +40,10 @@ add_executable(simshell main.cpp
         components/mpris/MprisPage.hpp
         components/active_window/ActiveWindowLabel.cpp
         components/active_window/ActiveWindowLabel.hpp
+        components/power/PowerMenuButton.cpp
+        components/power/PowerMenuButton.hpp
+        components/power/PowerPopover.cpp
+        components/power/PowerPopover.hpp
 )
 
 # GTKmm

@@ -2,8 +2,8 @@ window {
     border-radius: 0;
 }
 
-.mpris_popover {
-    margin-right: 30px;
+.mpris_popover, .power_popover {
+    margin-right: 20px;
 }
 
 .mpris_page {

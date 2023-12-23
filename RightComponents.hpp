@@ -8,18 +8,13 @@
 #include <gtkmm/menubutton.h>
 #include "components/BrightnessSlider.hpp"
 #include "components/mpris/MprisButton.hpp"
+#include "components/power/PowerMenuButton.hpp"
 
 class RightComponents: public Gtk::Box {
 public:
     RightComponents();
     ~RightComponents() override;
-protected:
-    void on_map() override;
-    void on_unmap() override;
 private:
-    Gtk::MenuButton mb;
-    Gtk::Popover popover;
-    std::vector<BrightnessSlider*> brightness_sliders;
-
+    PowerMenuButton* power_button;
     MprisButton* mpris_button;
 };
