@@ -1,5 +1,7 @@
 window {
     border-radius: 0;
+    min-height: 40px;
+    background-color: transparent;
 }
 
 .mpris_popover, .power_popover {
@@ -23,8 +25,24 @@ window {
     padding-top: 10px;
 }
 
-button {
-    transition: all .5s;
+.workspace_button {
+    padding: 0;
+    margin: 0;
+}
+
+.workspaces {
+    background-color: #1e1e2e;
+    border-radius: 6px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.workspace_button {
+    background: none;
     outline: none;
     border: none;
+}
+
+.workspace_button_selected {
+    color: pink;
 }

@@ -9,12 +9,14 @@
 #include "components/BrightnessSlider.hpp"
 #include "components/mpris/MprisButton.hpp"
 #include "components/power/PowerMenuButton.hpp"
+#include "components/datetime/DateTimeButton.hpp"
 
 class RightComponents: public Gtk::Box {
 public:
     RightComponents();
     ~RightComponents() override;
 private:
+    DateTimeButton* dtb;
     PowerMenuButton* power_button;
     MprisButton* mpris_button;
 };

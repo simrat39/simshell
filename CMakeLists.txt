@@ -44,6 +44,8 @@ add_executable(simshell main.cpp
         components/power/PowerMenuButton.hpp
         components/power/PowerPopover.cpp
         components/power/PowerPopover.hpp
+        components/workspaces/HyprlandWorkspaceButton.cpp
+        components/workspaces/HyprlandWorkspaceButton.hpp
 )
 
 # GTKmm
@@ -91,3 +93,12 @@ link_directories(${LIBSOUP_LIBRARY_DIRS})
 link_libraries(${LIBSOUP_LIBRARIES})
 
 target_link_libraries(simshell ${LIBSOUP_LIBRARIES})
+
+# json
+pkg_check_modules(JSON REQUIRED nlohmann_json)
+
+include_directories(${JSON_INCLUDE_DIRS})
+link_directories(${JSON_LIBRARY_DIRS})
+link_libraries(${JSON_LIBRARIES})
+
+target_link_libraries(simshell ${JSON_LIBRARIES})

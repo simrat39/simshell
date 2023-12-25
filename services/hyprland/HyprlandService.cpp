@@ -8,6 +8,7 @@
 #include <sys/un.h>
 #include <sys/socket.h>
 #include <thread>
+#include <glibmm/dispatcher.h>
 
 HyprlandService HyprlandService::get_instance() {
     static HyprlandService instance;
@@ -34,11 +35,15 @@ HyprlandService::HyprlandService() {
 
             if (bytesRead == -1) {
                 perror("Error reading from socket");
+                break;
             } else if (bytesRead == 0) {
                 printf("Connection closed by the server\n");
+                break;
             } else {
                 on_hypripc_data(std::string(buffer, bytesRead));
             }
+
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
     }}.detach();
 }
@@ -65,10 +70,62 @@ void HyprlandService::on_hypripc_data(const std::string &data) {
             event = ACTIVE_WINDOW;
         } else if (e_name == "destroyworkspace") {
             event = DESTROY_WORKSPACE;
-        } else if (e_name == "openlayer") {}
+        } else if (e_name == "createworkspace") {
+            event = CREATE_WORKSPACE;
+        }
 
         signal_data_recieved.emit(event, e_data);
     }
+}
+
+std::string HyprlandService::get_hyprctl_socket() {
+    auto his = std::getenv("HYPRLAND_INSTANCE_SIGNATURE");
+    return std::string("/tmp/hypr/") + std::string(his) + std::string("/.socket.sock");
+}
+
+std::string HyprlandService::hyperctl_request(const char* request) {
+    int sock = socket(AF_UNIX, SOCK_STREAM, 0);
+
+    struct sockaddr_un server_address{};
+    server_address.sun_family = AF_UNIX;
+    strcpy(server_address.sun_path, get_hyprctl_socket().c_str());
+
+    // Connect to the server
+    if (connect(sock, (struct sockaddr *) &server_address, sizeof(server_address)) == -1) {
+        perror("Error connecting to socket");
+        close(sock);
+    }
+
+    if (send(sock, request, strlen(request), 0) == -1) {
+        perror("Error sending data to socket");
+        close(sock);
+        return "";
+    }
+
+    std::string ret;
+
+    char buffer[4096];
+    ssize_t bytesRead = recv(sock, buffer, sizeof(buffer), 0);
+
+    do {
+        if (bytesRead == -1) {
+            perror("Error reading from socket");
+            close(sock);
+            return "";
+        } else if (bytesRead == 0) {
+            printf("Connection closed by the server\n");
+            close(sock);
+            return "";
+        } else {
+            ret.append(buffer, bytesRead);
+        }
+
+        bytesRead = recv(sock, buffer, sizeof(buffer), 0);
+    } while (bytesRead > 0);
+
+    close(sock);
+
+    return ret;
 }
 
 HyprlandService::~HyprlandService() = default;

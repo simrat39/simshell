@@ -9,6 +9,7 @@
 #include <gtkmm/label.h>
 #include <gtkmm/button.h>
 #include "../../services/hyprland/HyprlandService.hpp"
+#include "HyprlandWorkspaceButton.hpp"
 
 class HyprlandWorkspaces: public Gtk::Box {
 public:
@@ -17,7 +18,8 @@ public:
 private:
     void hyperland_data_cb(HyprlandService::HyprlandEvent event, const std::string& data);
 
-    std::set<std::string> workspaces;
-    std::set<std::pair<std::string, Gtk::Button>> ws_widgets;
-    Gtk::Label label;
+    std::vector<std::pair<int, std::string>> workspaces;
+    std::vector<HyprlandWorkspaceButton*> ws_widgets;
+
+    std::mutex mutex;
 };
