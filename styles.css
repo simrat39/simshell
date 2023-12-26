@@ -46,3 +46,11 @@ window {
 .workspace_button_selected {
     color: pink;
 }
+
+.active_window {
+    background-color: #1e1e2e;
+    border-radius: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #fab387;
+}

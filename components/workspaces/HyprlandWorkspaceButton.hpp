@@ -14,6 +14,8 @@ public:
 
     void set_current();
     void unset_current();
+    void on_click();
+    void on_state_change(Gtk::StateFlags oldState);
 private:
     int id;
     std::string name;

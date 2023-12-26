@@ -8,7 +8,7 @@
 
 HyprlandWorkspaces::HyprlandWorkspaces() : Gtk::Box() {
     this->add_css_class("workspaces");
-    auto service = HyprlandService::get_instance();
+    auto& service = HyprlandService::get_instance();
 
     auto workspaces_json = service.hyperctl_request("j/workspaces");
     auto parsed_json = nlohmann::json::parse(workspaces_json);

@@ -8,14 +8,17 @@
 #include <sys/un.h>
 #include <sys/socket.h>
 #include <thread>
-#include <glibmm/dispatcher.h>
 
-HyprlandService HyprlandService::get_instance() {
+HyprlandService& HyprlandService::get_instance() {
     static HyprlandService instance;
     return instance;
 }
 
 HyprlandService::HyprlandService() {
+    dispatcher.connect([&](){
+       this->process_queue();
+    });
+
     std::thread{[this]() {
         int sock = socket(AF_UNIX, SOCK_STREAM, 0);
 
@@ -74,7 +77,8 @@ void HyprlandService::on_hypripc_data(const std::string &data) {
             event = CREATE_WORKSPACE;
         }
 
-        signal_data_recieved.emit(event, e_data);
+        enqueue(event, e_data);
+        dispatcher.emit();
     }
 }
 
@@ -126,6 +130,22 @@ std::string HyprlandService::hyperctl_request(const char* request) {
     close(sock);
 
     return ret;
+}
+
+void HyprlandService::enqueue(HyprlandService::HyprlandEvent event, std::string data) {
+    std::lock_guard<std::mutex> lock{queue_mutex};
+    data_queue.push(std::make_pair(event, data));
+}
+
+void HyprlandService::process_queue() {
+    std::lock_guard<std::mutex> lock{queue_mutex};
+
+    while (!data_queue.empty()) {
+        auto data = data_queue.front();
+        data_queue.pop();
+
+        signal_data_recieved.emit(data.first, data.second);
+    }
 }
 
 HyprlandService::~HyprlandService() = default;
