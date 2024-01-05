@@ -3,9 +3,10 @@
 //
 
 #include "../include/CenterComponents.hpp"
-#include "services/backlight/BacklightService.hpp"
 
 CenterComponents::CenterComponents(): Gtk::Box() {
+    this->add_css_class("center_components");
+
     dtb = Gtk::make_managed<DateTimeButton>();
     append(*dtb);
 }

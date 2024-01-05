@@ -80,12 +80,12 @@ window {
   margin-right: 5px;
 }
 
-.right_components {
+.right_components, .center_components {
   background-color: #1e1e2e;
   border-radius: 8px;
 }
 
-.right_components button:not(:hover):not(:checked) {
+.right_components button:not(:hover):not(:checked), .center_components button:not(:hover):not(:checked) {
   background: none;
   outline: none;
   border: none;

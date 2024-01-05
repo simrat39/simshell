@@ -4,19 +4,17 @@
 
 #pragma once
 
-#include <gtkmm/box.h>
-#include <gtkmm/menubutton.h>
-#include "components/BrightnessSlider.hpp"
 #include "components/mpris/MprisButton.hpp"
 #include "components/power/PowerMenuButton.hpp"
-#include "components/datetime/DateTimeButton.hpp"
+#include <gtkmm/box.h>
+#include <gtkmm/menubutton.h>
 
-class RightComponents: public Gtk::Box {
+class RightComponents : public Gtk::Box {
 public:
-    RightComponents();
-    ~RightComponents() override;
+  RightComponents();
+  ~RightComponents() override;
+
 private:
-    DateTimeButton* dtb;
-    PowerMenuButton* power_button;
-    MprisButton* mpris_button;
+  PowerMenuButton *power_button;
+  MprisButton *mpris_button;
 };

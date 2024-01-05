@@ -10,13 +10,14 @@
 #include "RightComponents.hpp"
 #include "CenterComponents.hpp"
 #include "LeftComponents.hpp"
+#include "gtkmm/centerbox.h"
 
 class RootBar: public Gtk::Window {
 public:
     RootBar();
     ~RootBar() override;
 protected:
-    Gtk::Box m_box{};
+    Gtk::CenterBox c_box{};
 
     LeftComponents* left;
     CenterComponents* center;
