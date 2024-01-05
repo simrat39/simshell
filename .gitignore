@@ -76,3 +76,5 @@ fabric.properties
 
 cmake-build-debug/
 build/
+.cache/
+compile_commands.json

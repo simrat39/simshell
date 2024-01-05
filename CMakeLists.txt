@@ -5,48 +5,34 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_executable(simshell main.cpp
-        RootBar.cpp
-        RootBar.hpp
-        SimshellApp.cpp
-        SimshellApp.hpp
-        RightComponents.cpp
-        RightComponents.hpp
-        components/BrightnessSlider.cpp
-        components/BrightnessSlider.hpp
-        services/backlight/BacklightService.cpp
-        services/backlight/BacklightService.hpp
-        services/backlight/BacklightDevice.cpp
-        services/backlight/BacklightDevice.hpp
-        CenterComponents.hpp
-        CenterComponents.cpp
-        components/datetime/DateTimeButton.cpp
-        components/datetime/DateTimeButton.hpp
-        services/hyprland/HyprlandService.cpp
-        services/hyprland/HyprlandService.hpp
-        components/workspaces/HyprlandWorkspaces.cpp
-        components/workspaces/HyprlandWorkspaces.hpp
-        LeftComponents.hpp
-        LeftComponents.cpp
-        services/mpris/MprisService.cpp
-        services/mpris/MprisService.hpp
-        services/mpris/MprisPlayer.cpp
-        services/mpris/MprisPlayer.hpp
-        components/mpris/MprisButton.cpp
-        components/mpris/MprisButton.hpp
-        components/mpris/MprisPopover.cpp
-        components/mpris/MprisPopover.hpp
-        components/mpris/MprisPage.cpp
-        components/mpris/MprisPage.hpp
-        components/active_window/ActiveWindowLabel.cpp
-        components/active_window/ActiveWindowLabel.hpp
-        components/power/PowerMenuButton.cpp
-        components/power/PowerMenuButton.hpp
-        components/power/PowerPopover.cpp
-        components/power/PowerPopover.hpp
-        components/workspaces/HyprlandWorkspaceButton.cpp
-        components/workspaces/HyprlandWorkspaceButton.hpp
+add_executable(simshell src/main.cpp
+        src/SimshellApp.cpp
+        src/RootBar.cpp
+        src/RightComponents.cpp
+        src/CenterComponents.cpp
+        src/LeftComponents.cpp
+
+        src/components/BrightnessSlider.cpp
+        src/components/datetime/DateTimeButton.cpp
+        src/components/workspaces/HyprlandWorkspaces.cpp
+        src/components/workspaces/HyprlandWorkspaceButton.cpp
+        src/components/active_window/ActiveWindowLabel.cpp
+        src/components/mpris/MprisButton.cpp
+        src/components/mpris/MprisPopover.cpp
+        src/components/mpris/MprisPage.cpp
+        src/components/power/PowerMenuButton.cpp
+        src/components/power/PowerPopover.cpp
+
+        src/services/backlight/BacklightService.cpp
+        src/services/backlight/BacklightDevice.cpp
+        src/services/hyprland/HyprlandService.cpp
+        src/services/mpris/MprisService.cpp
+        src/services/mpris/MprisPlayer.cpp
+        src/services/battery/BatteryService.cpp
+        src/services/battery/BatteryDevice.cpp
 )
+
+target_include_directories(simshell PUBLIC include)
 
 # GTKmm
 find_package(PkgConfig REQUIRED)
@@ -102,3 +88,12 @@ link_directories(${JSON_LIBRARY_DIRS})
 link_libraries(${JSON_LIBRARIES})
 
 target_link_libraries(simshell ${JSON_LIBRARIES})
+
+# upower-glib
+pkg_check_modules(UPOWER REQUIRED upower-glib)
+
+include_directories(${UPOWER_INCLUDE_DIRS})
+link_directories(${UPOWER_LIBRARY_DIRS})
+link_libraries(${UPOWER_LIBRARIES})
+
+target_link_libraries(simshell ${UPOWER_LIBRARIES})
