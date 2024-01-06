@@ -37,7 +37,7 @@
 @define-color rosewater #f5e0dc;
 
 * {
-  font-size: 15px;
+  font-size: 13px;
 }
 
 window {
@@ -68,6 +68,20 @@ window {
   padding-top: 10px;
 }
 
+.right_components,
+.center_components {
+  background-color: #1e1e2e;
+  border-radius: 8px;
+}
+
+.right_components button:not(:hover):not(:checked),
+.center_components button:not(:hover):not(:checked) {
+  background: none;
+  outline: none;
+  border: none;
+  transition: all 0.3s;
+}
+
 .workspace_button {
   padding: 0;
   margin: 0;
@@ -78,18 +92,8 @@ window {
   border-radius: 6px;
   margin-left: 5px;
   margin-right: 5px;
-}
-
-.right_components, .center_components {
-  background-color: #1e1e2e;
-  border-radius: 8px;
-}
-
-.right_components button:not(:hover):not(:checked), .center_components button:not(:hover):not(:checked) {
-  background: none;
-  outline: none;
-  border: none;
-  transition: all 0.3s;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .workspace_button:not(:hover):not(:checked) {
@@ -108,4 +112,12 @@ window {
   padding-left: 10px;
   padding-right: 10px;
   color: #fab387;
+}
+
+#brightness-osd {
+  padding: 40px;
+  padding-right: 60px;
+  padding-left: 60px;
+  background-color: @crust;
+  border-radius: 16px;
 }

@@ -3,6 +3,7 @@
 //
 
 #include "components/power/PowerPopover.hpp"
+#include "services/backlight/BacklightService.hpp"
 
 PowerPopover::PowerPopover() {
     content.set_orientation(Gtk::Orientation::VERTICAL);
@@ -25,9 +26,10 @@ void PowerPopover::on_map() {
     GList *d;
     for (d = b_devices; d != nullptr; d = d->next) {
         auto bs = Gtk::make_managed<BrightnessSlider>(G_UDEV_DEVICE(d->data));
+        brightness_sliders.push_back(bs);
+
         bs->set_hexpand(true);
         content.append(*bs);
-        brightness_sliders.push_back(bs);
     }
     //
 }

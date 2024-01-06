@@ -2,9 +2,9 @@
 // Created by simrat39 on 12/18/23.
 //
 
-#include <iostream>
 #include "components/BrightnessSlider.hpp"
 #include <giomm/themedicon.h>
+#include "services/backlight/BacklightService.hpp"
 #include <glibmm/main.h>
 
 BrightnessSlider::BrightnessSlider(GUdevDevice *device) : Gtk::Box(), device(device) {
@@ -18,8 +18,6 @@ BrightnessSlider::BrightnessSlider(GUdevDevice *device) : Gtk::Box(), device(dev
 
     scale.set_range(0, 100);
     scale.set_hexpand(true);
-    scale.signal_value_changed().connect(
-            sigc::mem_fun(*this, &BrightnessSlider::on_scale_value_changed));
 
     auto max_brightness = g_udev_device_get_sysfs_attr_as_int(device, "max_brightness");
     auto cur_brightness = g_udev_device_get_sysfs_attr_as_int(device, "brightness");
@@ -28,6 +26,9 @@ BrightnessSlider::BrightnessSlider(GUdevDevice *device) : Gtk::Box(), device(dev
     scale.set_value(scaled * 100);
 
     img.set(Gio::ThemedIcon::create("display-brightness-symbolic"));
+
+    scale.signal_value_changed().connect(
+            sigc::mem_fun(*this, &BrightnessSlider::on_scale_value_changed));
 }
 
 void BrightnessSlider::on_map() {

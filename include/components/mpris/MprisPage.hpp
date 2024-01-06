@@ -8,7 +8,7 @@
 #include <gtkmm/image.h>
 #include <gtkmm/progressbar.h>
 #include <libsoup/soup-session.h>
-#include "../../services/mpris/MprisPlayer.hpp"
+#include "services/mpris/MprisPlayer.hpp"
 
 class MprisPage: public Gtk::Box {
 public:

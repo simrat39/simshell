@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkRevealer" id="revealer">
+    <property name="name">revealer</property>
+    <property name="reveal-child">false</property>
+    <property name="transition-type">1</property>
+    <child>
+      <object class="GtkBox">
+        <property name="name">brightness-osd</property>
+        <property name="orientation">1</property>
+        <property name="valign">3</property>
+        <property name="halign">3</property>
+        <child>
+          <object class="GtkImage">
+            <property name="name">logo</property>
+            <property name="icon-name">weather-clear</property>
+            <property name="pixel-size">100</property>
+            <property name="margin-bottom">35</property>
+            <style>
+              <class name="icon-dropshadow"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkProgressBar" id="progress">
+            <property name="name">progress</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

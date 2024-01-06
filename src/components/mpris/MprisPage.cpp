@@ -3,7 +3,6 @@
 //
 
 #include <gtkmm/label.h>
-#include <iostream>
 #include <glibmm.h>
 #include <libsoup-3.0/libsoup/soup-session.h>
 

@@ -8,7 +8,7 @@
 #include <gtkmm/menubutton.h>
 #include <upower.h>
 #include "PowerPopover.hpp"
-#include "../../services/battery/BatteryDevice.hpp"
+#include "services/battery/BatteryDevice.hpp"
 
 class PowerMenuButton: public Gtk::Box {
 public:
