@@ -6,7 +6,7 @@
 
 #include <gtkmm/popover.h>
 #include <gtkmm/box.h>
-#include "../BrightnessSlider.hpp"
+#include "BrightnessSlider.hpp"
 
 class PowerPopover: public Gtk::Popover {
 public:
@@ -16,6 +16,6 @@ protected:
     void on_map() override;
     void on_unmap() override;
 private:
-    Gtk::Box content;
+    Gtk::Box* brightness_box;
     std::vector<BrightnessSlider*> brightness_sliders;
 };

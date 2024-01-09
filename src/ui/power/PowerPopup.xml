@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkBox" id="box">
+    <property name="name">box</property>
+    <property name="orientation">1</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">1</property>
+        <property name="margin-top">10</property>
+        <property name="margin-start">10</property>
+        <property name="margin-end">10</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="name">brightness-label</property>
+            <property name="label">Brightness</property>
+            <property name="halign">1</property>
+            <property name="margin-bottom">5</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox" id="brightness-box">
+            <property name="orientation">0</property>
+            <property name="margin-bottom">15</property>
+            <child>
+              <object class="GtkImage">
+                <property name="icon-name">weather-clear</property>
+                <property name="pixel-size">20</property>
+                <property name="margin-end">10</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">1</property>
+        <property name="margin-start">10</property>
+        <property name="margin-end">10</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="name">brightness-label</property>
+            <property name="label">Battery</property>
+            <property name="halign">1</property>
+            <property name="margin-bottom">10</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">0</property>
+            <property name="margin-bottom">15</property>
+            <child>
+              <object class="GtkImage">
+                <property name="icon-name">battery-full</property>
+                <property name="pixel-size">20</property>
+                <property name="margin-end">10</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkProgressBar">
+                <property name="name">brightness-scale</property>
+                <property name="hexpand">true</property>
+                <property name="valign">3</property>
+                <property name="fraction">0.6</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

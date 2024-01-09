@@ -13,7 +13,7 @@ add_executable(simshell src/main.cpp
         src/CenterComponents.cpp
         src/LeftComponents.cpp
 
-        src/components/BrightnessSlider.cpp
+        src/components/power/BrightnessSlider.cpp
         src/components/datetime/DateTimeButton.cpp
         src/components/workspaces/HyprlandWorkspaces.cpp
         src/components/workspaces/HyprlandWorkspaceButton.cpp

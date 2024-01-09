@@ -6,7 +6,7 @@
 
 #include <gtkmm/box.h>
 #include <gtkmm/menubutton.h>
-#include "components/BrightnessSlider.hpp"
+#include "components/power/BrightnessSlider.hpp"
 #include "components/datetime/DateTimeButton.hpp"
 #include "components/workspaces/HyprlandWorkspaces.hpp"
 

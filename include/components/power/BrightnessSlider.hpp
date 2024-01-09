@@ -20,7 +20,6 @@ protected:
     void on_map() override;
     void on_unmap() override;
 private:
-    Gtk::Image img;
     Gtk::Scale scale;
     GUdevDevice* device;
 
